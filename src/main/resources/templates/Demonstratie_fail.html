@@ -1,0 +1,58 @@
+<!doctype html>
+<html ng-app="">
+	<head>
+		<title>Hello AngularJS</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    	<script src="js/VoorbeeldStephanie.js"></script>
+	</head>
+	<style>
+	body{
+	background-color:red;
+	font-family:sans-serif;
+	font-weight:400;
+	text-align:center;
+	
+	}
+	
+	#Fail{
+	font-size:40px;
+	margin:auto;
+	Color:white;
+	width:50%;
+	height:20%;
+	position:absolute;
+	top:0;right:0;left:0; bottom:0;
+	}
+	
+	#FailText{
+	width:50%;
+	height:20%;
+	text-align:center;
+	font-size:60px;
+	
+	margin:auto;
+	position:absolute;
+	top:-150px;right:0;left:0; bottom:0;
+	color:white;
+	}
+	
+	#FailWachtrij{
+	width:50%;
+	height:20%;
+	text-align:center;
+	font-size:60px;
+	
+	margin:auto;
+	position:absolute;
+	top:0px;right:0;left:0; bottom:-200px;
+	color:white;
+	}
+	</style>
+	<body>
+	<b id="FailText">Fail!</b><br/>
+	<Div id="Fail">
+	
+	U staat in de wachtrij om deze aanbieding te dibsen.<br/>
+	Uw plek in de wachtrij is:</Div> <br/>	<div id="FailWachtrij" ng-controller="Hello"> <p> {{event.plekInRij}}</p></div>
+	</body>
+</html>

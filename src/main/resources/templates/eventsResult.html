@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html data-ng-app="eventApp">
+<head>
+	<title>Dibs | Low budget events</title>
+	<meta charset="UTF-8"/>
+	<!--Default zoom for mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1" /> 
+
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/onepage-scroll.css"/>
+	<link rel="stylesheet" type="text/css" href="css/calendarview.css" />
+	<link rel="stylesheet" type="text/css" href="http://daneden.github.io/animate.css/animate.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+     <link rel="stylesheet" type="text/css" href="css/styles_event.css"/>
+      <link rel="stylesheet" type="text/css" href="css/styles_mobiel.css"/>
+  
+	<!-- FONTS -->
+	<link href='https://fonts.googleapis.com/css?family=Codystar' rel='stylesheet' type='text/css'/>
+	<link href='https://fonts.googleapis.com/css?family=Comfortaa:300' rel='stylesheet' type='text/css'/>
+	<link href='https://fonts.googleapis.com/css?family=Caveat' rel='stylesheet' type='text/css'/>
+	<link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'/>
+	<link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'/>
+
+	<!-- ICONS -->
+
+
+	<!-- SCRIPTS -->
+	<!-- Paginatie laten werken -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+	<!--Bootstrap-->
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+	<!--Angular-->
+	<script type="text/javascript" src="js/angular.js"></script>
+	<script type="text/javascript" src="js/angular-route.js"></script>
+	  <!-- Angular Material requires Angular.js Libraries -->
+	  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+	  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+	  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+	  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+	
+	  <!-- Angular Material Library -->
+	  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+	<script src="http://ngmaterial.assets.s3.amazonaws.com/svg-assets-cache.js"></script>
+	
+	<!-- Moment -->
+	<script type="text/javascript" src="js/moment.min.js"></script>
+
+	<!--bootstrap ui -->
+	<script data-require="angular-ui-bootstrap@0.3.0" data-semver="0.3.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.3.0.min.js"></script>
+    
+    <!-- Facebook Login -->
+	<script src="js/angular-facebook.js"></script>
+	
+	<!--Events-->
+	<script type="text/javascript" src="js/eventApp.js"></script>
+	
+	<!--Navigation-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+       <script>
+        $(document).ready(function() {
+            $('#fullpage').fullpage({
+                anchors: ['Pag1'],
+                fixedElements: '.NavBar',
+                animateAnchor:true,
+                recordHistory:false,
+            });
+        });
+      </script>
+	      <!-- This following line is optional. Only necessary if you use the option css3:false and you want to use other easing effects rather than "linear", "swing" or "easeInOutCubic". -->
+		<script src="js/vendors/jquery.easings.min.js"></script>
+
+		<!-- This following line is only necessary in the case of using the plugin option `scrollOverflow:true` -->
+		<script type="text/javascript" src="js/vendors/jquery.slimscroll.min.js"></script>
+
+		<script type="text/javascript" src="js/jquery.fullPage.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+
+		<!--mobiele navbar-->
+		<script>
+		$(document).on('click', '#toggle', function() {
+    		$(this).toggleClass('active');
+			$('#overlay').toggleClass('open');
+		});
+		</script>
+
+		<!--If somebody resizes window, make sure only 3 events display at a time-->
+		<script> window.onresize = function(){
+			    var el = document.getElementById('EventsContainer');
+			    img.style.width = "100%";
+		}
+		</script>
+		  <script>
+	    $(document).on('click', '#favourite_user', function() {
+			  $(this).toggleClass('favourited unfavourited');
+			});
+		</script>
+
+	
+</head>
+<body data-ng-controller="EventResultController">
+<div class="NavBar">
+	<ul>
+		<li data-menuanchor="Pag1" ><a href="index" >Home</a></li>
+
+	</ul>
+					
+</div>
+
+<div class="mobile_NavBar">
+<div class="button_container" id="toggle">
+  <span class="top"></span>
+  <span class="middle"></span>
+  <span class="bottom"></span>
+</div>
+
+<div class="overlay" id="overlay">
+  <nav class="overlay-menu">
+    <ul data-ng-controller="fbController">
+      	<li data-menuanchor="Pag1" ><a href="index" >Home</a></li>
+      	<li data-menuanchor="Pag2" ng-if="!logged"><a href="userOrAdmin?login=true">Login</a></li>
+		<li data-menuanchor="Pag3" ng-if="!logged"><a href="userOrAdmin?login=false">Register</a></li>
+		<li data-menuanchor="Pag4" ng-if="logged"><a data-ng-controller="fbController" ng-click="MyProfile()"><img id="fbPhoto" ng-src="{{user.userPhotoPath}}"/> Profile</a></li>
+		<li data-menuanchor="Pag5" ng-if="logged"><a ng-click="logout()">Logout</a></li>
+    </ul>
+  </nav>
+</div></div>
+
+
+
+<div class="LoginBar" >
+	<div ng-controller="fbController">
+		<div ng-if="!logged">
+			<ul>
+				<li><a href="userOrAdmin?login=true">Login</a></li>
+				<p> | </p>
+				<li><a href="userOrAdmin?login=false">Register</a></li>
+			</ul>
+		</div>
+		<div ng-if="logged">
+			<ul>
+				<li><a data-ng-controller="fbController" ng-click="MyProfile()"><img id="fbPhoto" ng-src="{{user.userPhotoPath}}"/> Profile</a></li>
+				<p> | </p>
+				<li><a ng-click="logout()">Logout</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+		
+<div id="fullpage">
+<div class="section" id="EventResult">
+<div id="ArrowBack" style="margin-left:3vw;">
+	<a  onclick="history.back(-1)"> Back </a>
+</div>
+<h2>To do on {{day}}/{{month}}/{{year}} in {{city}}</h2>
+				<div class="EventsTable"  ng-init="getEvents(0,numberOfEvents)">
+				<div class="EventsContainer" ng-style="{'width':MyWidth}" id="EventsContainer" data-ng-repeat="ev in resultEvents | orderBy: date">
+				  <div class="EventImage">
+				  	<img ng-src="img/DLogo.jpg"/>
+				  </div>
+				  <div class="EventRight">
+				  	<h2>{{ev.eventName}}</h2>
+				  	<ul>
+				  		<li style="text-align:left;padding-right:0; ">{{ev.eventDate}}</li>
+				  		<li style="text-align:right;padding-left:0;">{{ev.location.locationCity}}</li>
+				  	</ul>	
+				  	<div class="EventLikes">
+				  	<br/>
+					  	<ul>
+					  		<li>{{ev.eventLikes}} likes</li>
+					  		<li>{{ev.eventShares}} shares</li>
+					  		<li><button ng-click="resultEvent(ev.eventID)">More</button></li>
+					  	</ul>
+				  	</div>
+				  </div>
+			</div>
+			
+			</div>
+			
+						
+			<div id="indexPag" style="margin-top:-5vh;">
+				<ul class="pagination">
+				  <li data-ng-repeat="p in range(EventResultStartPage,totalPages-1)"><a ng-click="getEvents(p,numberOfEvents)">{{p+1}}</a></li>
+				</ul>
+			</div>
+</div>
+</div>
+		
+</body>
+</html>

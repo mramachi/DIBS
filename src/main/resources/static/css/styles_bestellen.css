@@ -1,0 +1,113 @@
+.pagina-bestellen{
+  background-size: cover;
+  background-image: url('../img/Bestellen.jpg');
+  overflow:hidden;
+  height:auto;
+  min-height:100vh;
+}
+
+#warningBestel{
+	margin:auto;
+	position:absolute;
+	right:18vw;
+	top:34vh;
+}
+
+.box-bestellen{
+  width: 90%;
+  margin: auto;
+  background-color: rgba(255,255,255,0.8);
+
+}
+
+.box-container-bestellen form{
+ width: 90%;
+margin:auto;
+padding:150px;
+margin-top:50px;
+}
+
+.box-container-bestellen h1{
+	text-align:center;
+	font-family:sans-serif;
+	font-size:50px;
+	 width: 90%;
+}
+
+.LoginBar{
+	position: fixed;
+	top: 2%;
+	right: 1%;
+	width: 50%;
+	text-align: right;
+	font-family: 'Comfortaa', sans-serif;
+	list-style-type: none;
+	color: white;
+	margin: 0;
+	z-index:50;
+}
+
+.LoginBar ul{
+	list-style-type: none;
+	margin: auto;
+}
+
+.LoginBar li, p{
+	display: inline;
+	padding: 10px;
+	margin: 0;
+}
+
+.LoginBar a{
+	color: white;
+	text-shadow: 1px 1px black;
+	text-decoration: none;
+}
+
+.LoginBar a:hover{
+	text-decoration: underline;
+}
+
+#fbPhoto{
+	width:30px;
+	height:auto;
+	border-radius:50%;
+}
+
+.mobile_NavBar{
+	display:none;
+}
+
+/*mobiel*/
+@media screen and (max-width: 800px){
+/*BESTELLEN*/
+
+		.box-bestellen{
+			width:100%;
+		}
+		.box-container-bestellen form{
+			width:100%;
+			padding:1vh;
+			margin-top:15vh;
+		}
+		
+		.box-container-bestellen{
+			width:100%;
+		}
+		.box-container-bestellen h1{
+			font-size:5vh;
+		} 
+		.box-container-bestellen h5{
+			font-size:3vh;
+			width:100%;
+		}
+		
+		.mobile_NavBar{
+			display:block;
+		}
+		
+		#ArrowBack{
+		 	display:none;
+		}
+}
+

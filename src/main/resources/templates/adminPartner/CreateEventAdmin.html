@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html ng-app="partnerApp">
+<head>
+	<title>Dibs | Partner Page</title>
+	<meta charset="UTF-8"></meta>
+	<!--Default zoom for mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1" /> 
+	<meta name="author" content="Mousti, Laura, Simon en Stephanie"/>
+	<meta http-equiv="pragma" content="no-cache"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	
+	<!-- CSS -->
+	<link rel="stylesheet" href="../css/bootstrap.min.css"/>
+	<link rel="stylesheet" href ="../css/bootstrap-theme.min.css"/>
+	<link rel="stylesheet" href="../css/styles_admin.css"/>
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css"/>
+	
+	
+	<!-- SCRIPTS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
+
+	<!--Bootstrap-->
+	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+	
+	<!--Angular-->
+	<script type="text/javascript" src="../js/angular.js"></script>
+	<script type="text/javascript" src="../js/angular-route.js"></script>
+	  <!-- Angular Material requires Angular.js Libraries -->
+	  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+	  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+	  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+	
+	  <!-- Angular Material Library -->
+	  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+	<script src="http://ngmaterial.assets.s3.amazonaws.com/svg-assets-cache.js"></script>
+	
+	<!-- Moment -->
+	<script type="text/javascript" src="../js/moment.min.js"></script>
+
+
+	<!--bootstrap ui -->
+	<script data-require="angular-ui-bootstrap@0.3.0" data-semver="0.3.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.3.0.min.js"></script>
+    
+    <!-- Partner App Angularjs -->
+    <script type="text/javascript" src="../js/partnerApp.js"></script>
+    
+    <!-- Angularjs Datatables -->
+  <!-- <script type="text/javascript" src="../js/angular-datatables.js"></script>
+    <script type="text/javascript" src="../js/angular-datatables.directive.js"></script>
+    <script type="text/javascript" src="../js/angular-datatables.instances.js"></script>
+    <script type="text/javascript" src="../js/angular-datatables.util.js"></script>
+    <script type="text/javascript" src="../js/angular-datatables.options.js"></script>
+    <script type="text/javascript" src="../js/angular-datatables.renderer.js"></script>
+    <script type="text/javascript" src="../js/angular-datatables.factory.js"></script>
+    -->
+</head>
+<body data-ng-controller="CreateEventAdminController">
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+   <a class="navbar-brand" ng-click="AdminPartner(partnerid)">
+        <img alt="Brand" src="../img/DLogo.jpg" style="height:30px;width:auto;" />
+     </a>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a ng-click="AdminPartner(partnerid)">My Page<span class="sr-only">(current)</span></a></li>
+        <li class="active"><a ng-click="EventAdminPartner(partnerid)">My Events</a></li>
+ 		<!-- <li><a ng-click="StatsAdminPartner(partnerid)">My Stats</a></li> -->
+ 			<li><a ng-click="OfferAdminPartner(partnerid)">My Offers</a></li>
+      </ul>
+    <!--    <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search"/>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form> -->
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="../index">Go back to Dibs!</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          <li><a ng-click="EditPartner(partnerid)">Edit Profile</a></li>
+           <li><a ng-click="ContactUs(partnerid)">Contact us</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a ng-click="DeletePage(partnerid)">Delete page</a></li>
+        
+ 
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+  </nav>
+  
+  
+ 
+ 
+ 
+<div class="container">
+    <h1>Create Event</h1>
+
+	<div class="row">
+      <!-- left column -->
+      <div class="col-md-3">
+        <div class="text-center">
+          <img ng-src="{{event.eventImagePath}}" class="avatar img-circle" alt="You haven't got a photo yet"/>
+   			 <h6>Upload a different photo...</h6>
+          
+          <input class="form-control" type="file"/>
+        </div>
+      </div>
+      
+      <!-- edit form column -->
+      <div class="col-md-9 personal-info">
+        <div class="alert alert-info alert-dismissable">
+          <a class="panel-close close" data-dismiss="alert">×</a> 
+          <i class="fa fa-coffee"></i>
+          Make sure you fill in all the fields with a *
+        </div>
+        <h3>Personal info</h3>
+        
+        <form id="editEvent" method="post" class="form-horizontal" role="form">
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Name:</label>
+            <div class="col-lg-8">
+              <input class="form-control" value="{{event.eventName}}" ng-model="event.eventName" type="text"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Description:</label>
+            <div class="col-lg-8">
+              <input class="form-control" value="{{event.eventDescription}}" ng-model="event.eventDescription" type="text"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Is Visible? :</label>
+            <div class="col-lg-8">
+             <select class="form-control" id="sel1" ng-model="event.eventIsVisible" >
+			    <option>TRUE</option>
+			    <option>FALSE</option>
+			  </select> </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Date :</label>
+            <div class="col-lg-8">
+              <input class="form-control"  required="true" value="{{event.eventDate}}" placeholder="yyyy-mm-dd" ng-model="event.eventDate" type="text"/>
+            </div>
+          </div>
+         
+          <div class="form-group">
+            <label class="col-md-3 control-label">Starttime :</label>
+            <div class="col-md-8">
+              <input class="form-control" required="true" ng-model="event.eventTimeStart" value="{{event.eventTimeStart}}" type="text" placeholder="hh:mm:ss"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label">Endtime :</label>
+            <div class="col-md-8">
+              <input class="form-control" required="true" ng-model="event.eventTimeStop" value="{{event.eventTimeStop}}" type="text" placeholder="hh:mm:ss"/>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="col-md-3 control-label">Street:</label>
+            <div class="col-md-8">
+              <input class="form-control" required="true" value="{{event.location.locationStreet}}" ng-model = "event.location.locationStreet" type="text"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label">House Number :</label>
+            <div class="col-md-8">
+              <input class="form-control" required="true" value="{{event.location.locationHouseNumber}}" ng-model = "event.location.locationHouseNumber" type="text"/>
+            </div>
+          </div>
+           <div class="form-group">
+            <label class="col-md-3 control-label">ZIP:</label>
+            <div class="col-md-8">
+              <input class="form-control" required="true" value="{{event.location.locationZIP}}" ng-model = "event.location.locationZIP" type="text"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label">City:</label>
+            <div class="col-md-8">
+              <input class="form-control" required="true" value="{{event.location.locationCity}}" ng-model = "event.location.locationCity" type="text"/>
+            </div>
+          </div>
+         
+          <div class="form-group">
+            <label class="col-md-3 control-label"></label>
+            <div class="col-md-8">
+              <input class="btn btn-primary" value="Save Changes" type="button" ng-click="CreateEvent()"/>
+              <span></span>
+              <input class="btn btn-default" value="Cancel" type="reset"/>
+            </div>
+          </div>
+          <div class="alert alert-success" ng-show="showSuccessAlert">
+			   
+			   <strong>Done!</strong> {{successTextAlert}}
+			 </div>
+			 <div class="alert alert-danger" ng-show="showDangerAlert">
+			   
+			   <strong>ERROR!</strong> {{dangerTextAlert}}
+			 </div>
+        </form>
+      </div>
+  </div>
+</div>
+
+  
+ <!-- TODO: 
+Offers,
+tabel 10 dingen showen tegelijk,
+Isvisible default geven,
+location meer dan enkel stad veranderen, 
+HTTP POST, 
+image path event,
+links overal doen werken,
+Report, contact , delete page, 
+cities van lijst,
+knoppen index doen werken,
+mobiel maken,
+likes shares oook naar databank
+partnerpage werkt more knop van events nog niet,
+  -->
+ 
+
+</body>
+<footer>
+</footer>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+ <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<script type="text/javascript">
+
+    $('#editEvent').validate({
+    	 rules: {
+             username: {
+                 required:true,
+                 rangelength: [4,20]
+             },
+             password : {
+                 required:true,
+                 rangelength:[4,20]
+             },
+             confirmpassword: {
+                 required:true,
+                 equalTo:"#passw"
+             },
+             email: {
+            	 required:true
+             },
+             partnername: {
+            	 required:true,
+            	 rangelength:[4,20]	
+             }
+         },
+         highlight: function(element) {
+             $(element).closest('.form-group').addClass('has-error');
+         },
+         unhighlight: function(element) {
+             $(element).closest('.form-group').removeClass('has-error');
+         },
+         errorElement: 'span',
+         errorClass: 'help-block',
+         errorPlacement: function(error, element) {
+             if(element.parent('.input-group').length) {
+                 error.insertAfter(element.parent());
+             } else {
+                 error.insertAfter(element);
+             }
+         },
+         messages:{
+             username:{
+                 required:"Username must be between 4 and 20 characters"
+             },
+             password:{
+                 required:"Password must be between 4 and 20 characters"
+             },
+             confirmpassword:{
+            	 equalTo:"Passwords must match"
+             },
+             partnername: {
+            	 required:"Partnername must be between 4 and 20 characters"
+             }
+         }
+    });
+
+</script>
+
+</html>

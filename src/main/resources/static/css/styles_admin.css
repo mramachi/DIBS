@@ -1,0 +1,16 @@
+
+#EditAdmin .has-error .control-label,
+#EditAdmin .has-error .help-block,
+#EditAdmin .has-error .form-control-feedback {
+    color: #f39c12;
+}
+
+#EditAdmin .has-success .control-label,
+#EditAdmin .has-success .help-block,
+#EditAdmin .has-success .form-control-feedback {
+    color: #18bc9c;
+}
+
+body{
+	min-height:100vh;
+}

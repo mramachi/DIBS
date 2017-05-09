@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html data-ng-app="eventApp">
+<head>
+	<title>Dibs | Low budget events</title>
+	<meta charset="UTF-8"></meta>
+	<!--Default zoom for mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1" /> 
+	<meta name="author" content="Mousti, Laura, Simon en Stephanie"/>
+	<meta http-equiv="pragma" content="no-cache"/>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="css/onepage-scroll.css"/>
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/calendarview.css" />
+	<link rel="stylesheet" type="text/css" href="http://daneden.github.io/animate.css/animate.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles_mobiel.css"/>
+
+	<!-- FONTS -->
+	<link href='https://fonts.googleapis.com/css?family=Codystar' rel='stylesheet' type='text/css'></link>
+	<link href='https://fonts.googleapis.com/css?family=Comfortaa:300' rel='stylesheet' type='text/css'></link>
+	<link href='https://fonts.googleapis.com/css?family=Caveat' rel='stylesheet' type='text/css'></link>
+	<link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'></link>
+	<link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'></link>
+
+	<!-- ICONS -->
+
+
+	<!-- SCRIPTS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+	<!--Bootstrap-->
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+	<!--Angular-->
+	<script type="text/javascript" src="js/angular.js"></script>
+	<script type="text/javascript" src="js/angular-route.js"></script>
+	  <!-- Angular Material requires Angular.js Libraries -->
+	  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+	  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+	  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+	  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+	
+	  <!-- Angular Material Library -->
+	  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+	<script src="http://ngmaterial.assets.s3.amazonaws.com/svg-assets-cache.js"></script>
+	
+	<!-- Moment -->
+	<script type="text/javascript" src="js/moment.min.js"></script>
+
+	<!--bootstrap ui -->
+	<script data-require="angular-ui-bootstrap@0.3.0" data-semver="0.3.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.3.0.min.js"></script>
+    
+	<!--Events-->
+	<script type="text/javascript" src="js/eventApp.js"></script>
+	
+	
+	<!--Navigation-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+	
+       <script>
+        $(document).ready(function() {
+            $('#fullpage').fullpage({
+                anchors: ['Home', 'Today', 'Tomorrow', 'Weekend', 'All', 'Dibs'],
+                fixedElements: '.NavBar',
+                animateAnchor:true,
+                recordHistory:false,
+                menu:true,
+              	slidesNavigation:true,
+            });
+        });
+        
+      
+      </script>
+	      <!-- This following line is optional. Only necessary if you use the option css3:false and you want to use other easing effects rather than "linear", "swing" or "easeInOutCubic". -->
+		<script src="js/vendors/jquery.easings.min.js"></script>
+
+		<!-- This following line is only necessary in the case of using the plugin option `scrollOverflow:true` -->
+		<script type="text/javascript" src="js/vendors/jquery.slimscroll.min.js"></script>
+
+		<script type="text/javascript" src="js/jquery.fullPage.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+
+		<!--mobiele navbar-->
+		<script>
+		$(document).on('click', '#toggle', function() {
+    		$(this).toggleClass('active');
+			$('#overlay').toggleClass('open');
+		});
+		</script>
+
+		<!--If somebody resizes window, make sure only 3 events display at a time-->
+		<script> window.onresize = function(){
+			    var el = document.getElementById('EventsContainer');
+			    el.img.style.width = "100%";
+		}
+		</script>
+		
+		<!-- Favorite  /unfavorite -->
+		  <script>
+	    $(document).on('click', '#favourite_user', function() {
+			  $(this).toggleClass('favourited unfavourited');
+			});
+		</script>
+
+
+	
+</head>
+<body>
+
+<div class="NavBar">
+	<ul>
+		<li data-menuanchor="Home" ><a href="#Home" >Home</a></li>
+		<li data-menuanchor="Today" data-ng-class="{'active':getClass('/events')}"><a href="#Today" >Today</a></li>
+		<li data-menuanchor="Tomorrow"><a href="#Tomorrow" >Tomorrow</a></li>
+		<li data-menuanchor="Weekend"><a href="#Weekend">This Weekend</a></li>
+		<li data-menuanchor="All"><a href="#All" >All Events</a></li>
+		<li data-menuanchor="Dibs"><a href="#Dibs">Dibs a Date</a></li>
+	</ul>
+					
+</div>
+
+<div class="mobile_NavBar">
+<div class="button_container" id="toggle">
+  <span class="top"></span>
+  <span class="middle"></span>
+  <span class="bottom"></span>
+</div>
+
+<div class="overlay" id="overlay">
+  <nav class="overlay-menu">
+    <ul>
+      	<li data-menuanchor="Home" ><a href="#Home" >Home</a></li>
+		<li data-menuanchor="Today" data-ng-class="{'active':getClass('/events')}"><a href="#Today" >Today</a></li>
+		<li data-menuanchor="Tomorrow"><a href="#Tomorrow" >Tomorrow</a></li>
+		<li data-menuanchor="Weekend"><a href="#Weekend">This Weekend</a></li>
+		<li data-menuanchor="All"><a href="#All" >All Events</a></li>
+		<li data-menuanchor="Dibs"><a href="#Dibs">Dibs a Date</a></li>
+    </ul>
+  </nav>
+</div></div>
+
+<div class="LoginBar">
+	<ul>
+		<li><a href="login.html#Login">Login</a></li>
+		<p> | </p>
+		<li><a href="login.html#Register">Register</a></li>
+	</ul>
+</div>
+
+<div id="fullpage">
+			<div class="section" id="HomePageLogo" data-anchor="Home">
+
+					
+			</div>
+
+
+			<div class="section" id="ToDoToday" data-anchor="Today">
+				<div class="slide"><h2>Eerste</h2></div>
+				<div class="slide"><h2>Tweede</h2></div>
+			</div>
+		
+		
+			<div class="section" id="ToDoTomorrow" data-anchor="Tomorrow" >
+			
+
+			</div>
+	
+			
+			<div class ="section" id="ThisWeekend" data-anchor="Weekend">
+			
+			</div>
+			
+			<div class="section" id="DibsAll" data-anchor="All">
+
+			</div>
+	
+
+			<div data-ng-controller="EventController" class="section" id="DibsSpecific" data-anchor="Dibs">
+						
+				<h2>Dibs A Date</h2>
+				<!--	<h5>Find any event anywhere anytime here.</h5> -->
+				<!-- <div class="reset"><input type="reset" /></div> -->
+				<form>
+					<div id="What">
+						<h3>What?</h3>
+					    <div class="form-group">
+					      <select class="form-control" id="sel1" data-ng-model="event.kind">
+					      		<option value="All">All</option>
+								<option value="Cinema">Cinema</option>
+								<option value="Avontuur">Pretpark</option>
+								<option value="Wellness">Wellness</option>
+								<option value="Theater">Theater</option>
+								<option value="Museum">Museum</option>
+								<option value="Concert">Concert</option>
+						  </select>
+					      
+						</div>
+					</div>
+
+					<div id="When">
+						<h3>When?</h3>
+
+				        
+				         
+						<div style="padding: 40px;" ng-cloak="">
+						  <md-content>
+						    <md-datepicker ng-model="dt" md-placeholder="Enter date" ng-change="event.date = dt.toISOString()"></md-datepicker>
+						  </md-content>
+						</div>        
+						  
+					</div>
+
+				
+
+					<div id="Where">
+						<h3>Where</h3>
+						<div class="form-group">
+							<select class="form-control" id="sel1" data-ng-model="event.place" >
+								<option value="All">Everywhere</option>
+								<option value="Gent">Gent</option>
+								<option value="Antwerpen">Antwerpen</option>
+								<option value="Kortrijk">Kortrijk</option>
+								<option value="Leuven">Leuven</option>
+							</select>	
+						</div>
+					</div>
+					
+					<input id="DibsItButton" type="submit" value="Dibs it!" data-ng-click="getEvents(event.kind,event.date,event.place,1)"/>
+					
+				</form>
+			</div>
+			
+
+
+</div>
+
+<footer>
+
+</footer>
+
+
+
+
+</body>
+</html>

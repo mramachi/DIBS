@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html data-ng-app="eventApp">
+<head>
+	<title>Dibs | Low budget events</title>
+	<meta charset="UTF-8"></meta>
+	<!--Default zoom for mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1" /> 
+	<meta name="author" content="Mousti, Laura, Simon en Stephanie"/>
+	<meta http-equiv="pragma" content="no-cache"/>
+
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/onepage-scroll.css"/>
+	<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/calendarview.css" />
+	<link rel="stylesheet" type="text/css" href="http://daneden.github.io/animate.css/animate.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+	<link rel="stylesheet" type="text/css" href="css/default.css"/>
+	<link rel="stylesheet" type="text/css" href="css/default.date.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles_mobiel.css"/>
+
+	<!-- FONTS -->
+	<link href='https://fonts.googleapis.com/css?family=Codystar' rel='stylesheet' type='text/css'></link>
+	<link href='https://fonts.googleapis.com/css?family=Comfortaa:300' rel='stylesheet' type='text/css'></link>
+	<link href='https://fonts.googleapis.com/css?family=Caveat' rel='stylesheet' type='text/css'></link>
+	<link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'></link>
+	<link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'></link>
+
+	<!-- ICONS -->
+
+
+	<!-- SCRIPTS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+	<!--Bootstrap-->
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+	<!--Angular-->
+	<script type="text/javascript" src="js/angular.js"></script>
+	<script type="text/javascript" src="js/angular-route.js"></script>
+	  <!-- Angular Material requires Angular.js Libraries -->
+	  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+	  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+	  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+	  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+	
+	  <!-- Angular Material Library -->
+	  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+	<script src="http://ngmaterial.assets.s3.amazonaws.com/svg-assets-cache.js"></script>
+	
+	<!-- Moment -->
+	<script type="text/javascript" src="js/moment.min.js"></script>
+
+	<!--bootstrap ui -->
+	<script data-require="angular-ui-bootstrap@0.3.0" data-semver="0.3.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.3.0.min.js"></script>
+   
+	<!--Events-->
+	<script type="text/javascript" src="js/eventApp.js"></script>
+	
+	<!-- Login -->
+	<script type="text/javascript" src="js/home.js"></script>
+	
+	<!-- Facebook Login -->
+	<script src="js/angular-facebook.js"></script>
+	
+	
+	<!--Navigation-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+	
+       <script>
+        $(document).ready(function() {
+            $('#fullpage').fullpage({
+                anchors: ['Pag1', 'Pag2', 'Pag3', 'Pag4', 'Pag5', 'Pag6', 'Pag7', 'Pag8'],
+                fixedElements: '.NavBar',
+                animateAnchor:true,
+                recordHistory:false,
+                menu:true,
+              	slidesNavigation:true,
+            });
+        });
+        
+      
+      </script>
+	      <!-- This following line is optional. Only necessary if you use the option css3:false and you want to use other easing effects rather than "linear", "swing" or "easeInOutCubic". -->
+		<script src="js/vendors/jquery.easings.min.js"></script>
+
+		<!-- This following line is only necessary in the case of using the plugin option `scrollOverflow:true` -->
+		<script type="text/javascript" src="js/vendors/jquery.slimscroll.min.js"></script>
+
+		<script type="text/javascript" src="js/jquery.fullPage.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+
+		<!--mobiele navbar-->
+		<script>
+		$(document).on('click', '#toggle', function() {
+    		$(this).toggleClass('active');
+			$('#overlay').toggleClass('open');
+		});
+		</script>
+
+		
+		<!-- Favorite  /unfavorite -->
+		  <script>
+	    $(document).on('click', '#favourite_user', function() {
+			  $(this).toggleClass('favourited unfavourited');
+			});
+		</script>
+
+	
+</head>
+<body>
+	
+    
+<div class="NavBar">
+	<ul>
+		<li data-menuanchor="Pag1" ><a href="#Pag1" >Home</a></li>
+		<li data-menuanchor="Pag2" data-ng-class="{'active':getClass('/events')}"><a href="#Pag2" >Today</a></li>
+		<li data-menuanchor="Pag3"><a href="#Pag3" >Tomorrow</a></li>
+		<li data-menuanchor="Pag4"><a href="#Pag4">This Weekend</a></li>
+		<li data-menuanchor="Pag5"><a href="#Pag5" >All Events</a></li>
+		<li data-menuanchor="Pag6"><a href="#Pag6">Dibs a Date</a></li>
+	</ul>
+					
+</div>
+
+<div class="mobile_NavBar">
+<div class="button_container" id="toggle">
+  <span class="top"></span>
+  <span class="middle"></span>
+  <span class="bottom"></span>
+</div>
+
+<div class="overlay" id="overlay" data-ng-controller="fbController">
+  <nav class="overlay-menu">
+    <ul id="mob_NavBar">
+      	<li data-menuanchor="Pag1" ><a href="#Pag1" >Home</a></li>
+		<li data-menuanchor="Pag2" data-ng-class="{'active':getClass('/events')}"><a href="#Pag2" >Today</a></li>
+		<li data-menuanchor="Pag3"><a href="#Pag3" >Tomorrow</a></li>
+		<li data-menuanchor="Pag4"><a href="#Pag4">This Weekend</a></li>
+		<li data-menuanchor="Pag5"><a href="#Pag5" >All Events</a></li>
+		<li data-menuanchor="Pag6"><a href="#Pag6">Dibs a Date</a></li>
+		<li data-menuanchor="Pag7" ng-if="!logged"><a href="userOrAdmin?login=true">Login</a></li>
+		<li data-menuanchor="Pag8" ng-if="!logged"><a href="userOrAdmin?login=false">Register</a></li>
+		<li data-menuanchor="Pag7" ng-if="logged"><a data-ng-controller="fbController" ng-click="MyProfile()"><img id="fbPhoto" ng-src="{{user.userPhotoPath}}"/> Profile</a></li>
+		<li data-menuanchor="Pag8" ng-if="logged"><a ng-click="logout()">Logout</a></li>
+    </ul>
+  </nav>
+</div></div>
+
+
+
+<div class="LoginBar" >
+	<div ng-controller="fbController">
+		<div id="test" ng-if="!logged">
+			<ul>
+				<li><a href="userOrAdmin?login=true">Login</a></li>
+				<p> | </p>
+				<li><a href="userOrAdmin?login=false">Register</a></li>
+			</ul>
+		</div>
+		<div ng-if="logged">
+			<ul>
+				<li><a data-ng-controller="fbController" ng-click="MyProfile()"><img id="fbPhoto" ng-src="{{user.userPhotoPath}}"/> Profile</a></li>
+				<p> | </p>
+				<li><a ng-click="logout()">Logout</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div id="fullpage" >
+			<div class="section" id="HomePageLogo" data-anchor="Pag1">
+					
+					<div id="Logo">
+						<figure>
+							<img src="img/transBigLogo.gif" alt="No Logo For you"></img>
+							<figcaption>Low Budget Events in your neighbourhood</figcaption>
+						</figure>
+					</div>
+					
+			</div>
+
+
+			<div class="section" id="ToDoToday" data-anchor="Pag2" data-ng-controller="EventController">
+			    	<h2>To Do Today</h2>
+					<div class="EventsTable"  ng-init="getTodayEvents(0,numberOfEvents)">
+					<div class="EventsContainer" ng-style="{'width':MyWidth}" id="EventsContainer" data-ng-repeat="ev in todayEvents | orderBy: date">
+					  <div class="EventImage">
+					  	<img ng-src="img/DLogo.jpg"/>
+					  </div>
+					  <div class="EventRight">
+					  	<h2>{{ev.eventName}}</h2>
+					  	<ul>
+					  		<li style="text-align:left;padding-right:0; ">{{ev.eventDate}}</li>
+					  		<li style="text-align:right;padding-left:0;">{{ev.location.locationCity}}</li>
+					  	</ul>	
+					  	<div class="EventLikes">
+					  	<br/>
+						  	<ul>
+						  		<li>{{ev.eventLikes}} likes</li>
+						  		<li>{{ev.eventShares}} shares</li>
+						  		<li><button ng-click="resultEvent(ev.eventID)">More</button></li>
+						  	</ul>
+					  	</div>
+					  </div>
+				</div>
+				
+				</div>
+				
+							
+				<div id="indexPag">
+					<ul class="pagination">
+					  <li data-ng-repeat="p in range(TodayStartPage,totalTodayPages-1)|limitTo:5"><a ng-click="getTodayEvents(p,numberOfEvents)">{{p+1}}</a></li>
+					</ul>
+				</div>
+			
+		
+			</div>
+		
+			<div class="section" id="ToDoTomorrow" data-anchor="Pag3" data-ng-controller="EventController">
+				<h2>To Do Tomorrow</h2>
+					<div class="EventsTable"  ng-init="getTomorrowEvents(0,numberOfEvents)">
+					<div class="EventsContainer" ng-style="{'width':MyWidth}" id="EventsContainer" data-ng-repeat="ev in tomorrowEvents | orderBy: date">
+					  <div class="EventImage">
+					  	<img ng-src="img/DLogo.jpg"/>
+					  </div>
+					  <div class="EventRight">
+					  	<h2>{{ev.eventName}}</h2>
+					  	<ul>
+					  		<li style="text-align:left;padding-right:0; ">{{ev.eventDate}}</li>
+					  		<li style="text-align:right;padding-left:0;">{{ev.location.locationCity}}</li>
+					  	</ul>	
+					  	<div class="EventLikes">
+					  	<br/>
+						  	<ul>
+						  		<li>{{ev.eventLikes}} likes</li>
+						  		<li>{{ev.eventShares}} shares</li>
+						  		<li><button ng-click="resultEvent(ev.eventID)">More</button></li>
+						  	</ul>
+					  	</div>
+					  </div>
+				</div>
+				
+				</div>
+				
+							
+				<div id="indexPag">
+					<ul class="pagination">
+					  <li data-ng-repeat="p in range(TomorrowStartPage,totalTomorrowPages-1)|limitTo:5"><a  ng-click="getTomorrowEvents(p,numberOfEvents)">{{p+1}}</a></li>
+					</ul>
+				</div>
+				
+
+			</div>
+	
+			
+			<div class ="section" id="ThisWeekend" data-anchor="Pag4" data-ng-controller="EventController">
+				<h2>This Weekend</h2>
+					<div class="EventsTable"  ng-init="getThisWeekendEvents(0,numberOfEvents)">
+					<div class="EventsContainer" ng-style="{'width':MyWidth}" id="EventsContainer" data-ng-repeat="ev in thisWeekendEvents | orderBy: date | limitTo:9">
+					  <div class="EventImage">
+					  	<img ng-src="img/DLogo.jpg"/>
+					  </div>
+					  <div class="EventRight">
+					  	<h2>{{ev.eventName}}</h2>
+					  	<ul>
+					  		<li style="text-align:left;padding-right:0; ">{{ev.eventDate}}</li>
+					  		<li style="text-align:right;padding-left:0;">{{ev.location.locationCity}}</li>
+					  	</ul>	
+					  	<div class="EventLikes">
+					  	<br/>
+						  	<ul>
+						  		<li>{{ev.eventLikes}} likes</li>
+						  		<li>{{ev.eventShares}} shares</li>
+						  		<li><button ng-click="resultEvent(ev.eventID)">More</button></li>
+						  	</ul>
+					  	</div>
+					  </div>
+				</div>
+				
+				</div>
+				
+							
+				<div id="indexPag">
+					<ul class="pagination">
+					  <li data-ng-repeat="p in range(ThisWeekendStartPage,totalThisWeekendPages-1) |limitTo:5"><a ng-click="getThisWeekendEvents(p,numberOfEvents)">{{p+1}}</a></li>
+					</ul>
+				</div>
+				
+			</div>
+			
+			<div class="section" id="DibsAll" data-ng-controller="EventController" data-anchor="Pag5">
+				<h2>All Events</h2>
+					<div class="EventsTable"  ng-init="getAllEvents(0,numberOfEvents)">
+					<div class="EventsContainer" ng-style="{'width':MyWidth}" id="EventsContainer" data-ng-repeat="ev in allEvents | orderBy: date">
+					  <div class="EventImage">
+					  	<img ng-src="img/DLogo.jpg"/>
+					  </div>
+					  <div class="EventRight">
+					  	<h2>{{ev.eventName}}</h2>
+					  	<ul>
+					  		<li style="text-align:left;padding-right:0; ">{{ev.eventDate}}</li>
+					  		<li style="text-align:right;padding-left:0;">{{ev.location.locationCity}}</li>
+					  	</ul>	
+					  	<div class="EventLikes">
+					  	<br/>
+						  	<ul>
+						  		<li>{{ev.eventLikes}} likes</li>
+						  		<li>{{ev.eventShares}} shares</li>
+						  		<li><button ng-click="resultEvent(ev.eventID)">More</button></li>
+						  	</ul>
+					  	</div>
+					  </div>
+				</div>
+				
+				</div>
+				
+							
+				<div id="indexPag">
+					<ul class="pagination">
+					  <li data-ng-repeat="p in range(AllEventsStartPage,totalAllEventsPages-1) |limitTo:5"><a ng-click="getAllEvents(p,numberOfEvents)">{{p+1}}</a></li>
+					</ul>
+				</div>
+				</div>
+	
+
+			<div data-ng-controller="EventController" class="section" id="DibsSpecific" data-anchor="Pag6">
+						
+				<h2>Dibs A Date</h2>
+				<h5>Find any event anywhere anytime here.</h5> 
+				<form>
+				<div class="middle">
+					<div id="What">
+						<h3>What?</h3>
+					    <div class="form-group">
+					      <select class="form-control" style="height:55px;" id="sel1" data-ng-model="event.kind">
+					      		<option value="All">All</option>
+								<option value="Cinema">Cinema</option>
+								<option value="Avontuur">Pretpark</option>
+								<option value="Wellness">Wellness</option>
+								<option value="Theater">Theater</option>
+								<option value="Museum">Museum</option>
+								<option value="Concert">Concert</option>
+						  </select>
+					      
+						</div>
+						</div>
+					</div>
+
+					<div id="When">
+						<h3>When?</h3>
+						  <md-content class="date" ng-cloak="">
+						    <md-datepicker class="dateContent" ng-model="dt" md-placeholder="Enter date" ng-change="event.date = dt.toISOString()"></md-datepicker>
+						  </md-content>
+					   
+						  
+					</div>
+
+				
+
+					<div id="Where">
+				
+						<h3>Where</h3>
+						<div class="form-group">
+							<select class="form-control" style="height:55px;" id="sel1" data-ng-model="event.place" >
+								<option value="All">Everywhere</option>
+								<option value="Gent">Gent</option>
+								<option value="Antwerpen">Antwerpen</option>
+								<option value="Kortrijk">Kortrijk</option>
+								<option value="Leuven">Leuven</option>
+							</select>	
+					</div>
+					</div>
+					
+					<input id="DibsItButton" type="submit" value="Dibs it!" data-ng-click="getEvents(event.kind,event.date,event.place,1)"/>
+					
+				</form>
+			</div>
+			
+
+
+</div>
+
+<footer>
+
+</footer>
+
+
+</body>
+</html>

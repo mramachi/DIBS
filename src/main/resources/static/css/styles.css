@@ -1,0 +1,584 @@
+div{
+	display:block;
+}
+
+html{
+	margin: 0;
+	height: 100%;
+	max-width: 100%;
+	overflow-x:hidden;
+	line-height: 0;
+}
+
+body{
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	overflow:hidden;
+}
+
+h2{
+	font-family: 'Codystar', sans-serif;
+	text-transform: capitalize;
+	font-size:10vh;
+	color:white;
+	margin:0;
+	padding:10px;
+	text-align:center;
+}
+
+.active{
+	
+}
+
+h5{
+	font-family: 'Poiret One', sans-serif;
+	font-size: 5vh;
+	text-align:center;
+	margin:0;
+	color:white;
+}
+
+#HomePageLogo{
+	background-image: url(../img/HomePage.jpg);
+	background-size:cover;
+	height: 1298px;
+}
+
+
+#Logo img {
+	position: absolute; 
+  	top: 0; 
+  	left: 0; 
+ 	right: 0; 
+ 	bottom: 0; 
+  	margin: auto; 
+  	width: 50vw;
+  	height: auto;
+
+  	min-height:30%;
+  	min-width:30%;
+
+}
+
+
+#Logo figcaption{
+	width: 100vw;
+	top: 15vh;
+	position: absolute;
+	text-align: center;
+	color: white;
+	font-family: 'Codystar', sans-serif;
+	text-transform: capitalize;
+	font-size: 40px;
+	margin-left: -15px;
+}
+
+.NavBar{
+	position: fixed;
+	bottom: 10px;
+	width: 100vw;
+	text-align: center;
+	font-family: 'Comfortaa', sans-serif;
+	margin: 0;
+	
+}
+
+
+.NavBar ul{
+	width:100vw;
+	list-style-type: none;
+	margin:auto;
+}
+
+.NavBar li{
+	display:inline;
+	padding:20px;
+	margin:0;
+}
+
+.NavBar a{
+	color:white;
+	text-shadow: 1px 1px black;
+	text-decoration:none;
+}
+
+.NavBar a:hover{
+	text-decoration: underline;
+}
+
+.mobile_NavBar{
+	display:none;
+}
+
+.LoginBar{
+	position: fixed;
+	top: 2%;
+	right: 1%;
+	width: 50%;
+	text-align: right;
+	font-family: 'Comfortaa', sans-serif;
+	list-style-type: none;
+	color: white;
+	margin: 0;
+	z-index:50;
+}
+
+.LoginBar ul{
+	list-style-type: none;
+	margin: auto;
+}
+
+.LoginBar li, p{
+	display: inline;
+	padding: 10px;
+	margin: 0;
+}
+
+.LoginBar a{
+	color: white;
+	text-shadow: 1px 1px black;
+	text-decoration: none;
+}
+
+.LoginBar a:hover{
+	text-decoration: underline;
+}
+
+#fbPhoto{
+	width:30px;
+	height:auto;
+	border-radius:50%;
+}
+
+
+#ToDoToday{
+height: 1298px;
+	background: #202337; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#202337, #282330); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#202337, #282330); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#202337, #282330); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#202337, #282330); /* Standard syntax */
+	background-size: cover;
+
+	color:white;
+
+}
+
+#ToDoTomorrow{
+	height: 1298px;
+	  background:#282330; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#282330, #282330); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#282330, #282330); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#282330, #282330); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#282330, #282330); /* Standard syntax */
+	background-size: cover;
+	
+	color:white;
+}
+
+#ThisWeekend{
+	height: 1298px;
+	background-size: cover;
+
+	background:#282330; /* fallback for old browsers */  
+    background: -webkit-linear-gradient( #282330, #311b21); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient( #282330,#311b21); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#282330, #311b21); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#282330 , #311b21); /* Standard syntax (must be last) */
+}
+
+
+#DibsAll{
+
+	background:#311b21; /* fallback for old browsers */  
+    background: -webkit-linear-gradient( #311b21, #10090b); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient( #311b21,#10090b); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#311b21, #10090b); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#311b21 , #10090b); /* Standard syntax (must be last) */
+	background-size: cover;
+
+}
+
+.EventsTable{
+	width:100%;
+	height:70vh;
+	margin-top:2vh;
+}
+
+
+.EventsContainer{
+	height:30%;
+	float:left;
+	background-color:#f2f2f2;
+	padding:1vh;
+	margin-left:2.4vw;
+	margin-top:2.8vh;
+}
+
+.EventImage{
+	background-color:white;
+	width:40%;
+	float:left;
+	height:18vh;
+	border:1px solid #b3b3b3;
+}
+
+.EventImage img{
+	width:60%;
+	height:75%;
+	opacity:0.2;
+	display:block;
+	margin:auto;
+	margin-top:2vh;
+}
+
+.EventRight{
+	font-family: 'Poiret One', sans-serif;
+	width:60%;
+	float:right;
+	padding:0;
+	height:100%;
+}
+
+.EventRight h2{
+	font-family: 'Comfortaa', cursive;
+	font-size:2vh;
+	color:black;
+	font-weight: 5px;
+	background-color: rgba(85%,85%,85%,1);
+}
+
+.EventRight ul{
+	width:100%;
+	list-style-type: none;
+	padding:0;
+	margin-top:2%;
+}
+
+.EventRight li{
+	width:50%;
+	float:left;
+	color:black;
+	font-size:1.6vh;
+	margin:auto;
+	padding:5%;
+
+}
+.EventRight_mobile{
+	display:none;
+}
+
+.EventLikes_mobile{
+	display:none;
+}
+
+.EventLikes button{
+	width:100%;
+	text-align:center;
+	padding:2%;
+	border-style: none;
+	background:none;
+}
+
+.EventLikes ul{
+	list-style-type: none;
+}
+.EventLikes li {
+	width:33%;
+	float:left;
+	font-size:10px;
+}
+
+#DibsSpecific{
+	height:100vh;
+	width:100vw;
+	background-size: cover;
+	background-image: url('../Img/CityLife.jpg');
+ 	display:inline-block;
+ 	overflow:auto;
+}
+
+
+
+#DibsSpecific h3{
+	font-family: 'Poiret One', sans-serif;
+	font-size: 5vh;
+}
+
+#What{
+	float:left;
+	display:inline-block;
+	margin:20px 20px 0 20px;
+	width:30vw;
+	background-color: rgba(93.3%,93.3%,93.3%,0.8);
+	height:20vh;
+}
+
+#What h3{
+	text-align: center;
+}
+
+
+
+#When{
+	float:left;
+	width:30vw;
+	height:20vh;
+	display:inline-block;
+	background-color: rgba(93.3%,93.3%,93.3%,0.8);
+	margin-top:20px;
+}
+
+#When h3{
+	text-align: center;
+}
+
+
+#Where{
+	float:left;
+	width:30vw;
+	margin:20px 20px 0 20px;
+	display:inline-block;
+	background-color: rgba(93.3%,93.3%,93.3%,0.8);
+	height:20vh;
+}
+
+#Where h3{
+	text-align: center;
+}
+
+ #sel1{
+	width:90%;
+	margin:auto;
+}
+
+.reset{
+	
+}
+
+
+
+#DibsItButton{
+	width:97vw;
+	height:8%;
+	color:white;
+	font-family:sans-serif;
+	font-size: 25px;
+	background-color: rgba(102, 153, 255,1);
+	margin:1%;
+	letter-spacing: 1px;
+	border-radius: 10px;
+
+}
+
+/*Hearts*/
+#favourite_user {
+	position:relative;
+     width: 25px;
+ 	 height: 0px;
+ 	 margin-left:17px;
+    margin-top:-1vh;
+   	cursor:pointer;
+}
+#favourite_user.favourited:before,#favourite_user.favourited:after {
+	background: red;
+}
+#favourite_user.unfavourited:before,#favourite_user.unfavourited:after {
+	background: #fff !important;
+}
+#favourite_user:before,
+#favourite_user:after {
+    position: absolute;
+    content: "";
+    top:0;
+    width: 12.5px;
+    height: 20px;
+    -moz-border-radius: 50px 50px 0 0;
+    border-radius: 50px 50px 0 0;
+    -webkit-transform: rotate(-45deg);
+       -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+         -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    -webkit-transform-origin: 0 100%;
+       -moz-transform-origin: 0 100%;
+        -ms-transform-origin: 0 100%;
+         -o-transform-origin: 0 100%;
+            transform-origin: 0 100%;
+
+}
+#favourite_user:after {
+    left: 0;
+	border-left:0px !important;
+    -webkit-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+         -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+    -webkit-transform-origin: 100% 100%;
+       -moz-transform-origin: 100% 100%;
+        -ms-transform-origin: 100% 100%;
+         -o-transform-origin: 100% 100%;
+            transform-origin :100% 100%;
+}
+
+
+
+
+
+#indexPag{
+	width:100%;
+	height:auto;
+	margin-top:3vh;
+	text-align:center;
+}
+
+#indexPag ul{
+	display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+#indexPagMobile{
+	display:none;
+}
+
+.date{
+  display: block;
+  width: 90%;
+  margin:auto;
+  height: 55px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.middle{
+	height:30%;
+	margin-top:22%;
+}
+
+
+/*POPUP*/
+
+.b, .bb {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url("http://i.imgur.com/kje4L5j.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+.bb {
+  background: url("http://i.imgur.com/bDBs0et.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  display: none;
+}
+
+#go {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  color: white;
+  border: 0;
+  background: #71c341;
+  width: 100px;
+  height: 30px;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: background 0.2s ease;
+  outline: none;
+}
+#go:hover {
+  background: #8ecf68;
+}
+#go:active {
+  background: #5a9f32;
+}
+
+.message {
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  width: 300px;
+  background: white;
+  border-radius: 8px;
+  padding: 30px;
+  text-align: center;
+  font-weight: 300;
+  color: #2c2928;
+  opacity: 0;
+  transition: top 0.3s cubic-bezier(0.31, 0.25, 0.5, 1.5), opacity 0.2s ease-in-out;
+}
+.message .check {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(4);
+  width: 120px;
+  height: 110px;
+  background: #71c341;
+  color: white;
+  font-size: 3.8rem;
+  padding-top: 10px;
+  border-radius: 50%;
+  opacity: 0;
+  transition: transform 0.2s 0.25s cubic-bezier(0.31, 0.25, 0.5, 1.5), opacity 0.1s 0.25s ease-in-out;
+}
+.message .scaledown {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+.message p {
+  font-size: 1.1rem;
+  margin: 25px 0px;
+  padding: 0;
+}
+.message p:nth-child(2) {
+  font-size: 2.3rem;
+  margin: 40px 0px 0px 0px;
+}
+.message #ok {
+  position: relative;
+  color: white;
+  border: 0;
+  background: #71c341;
+  width: 100%;
+  height: 50px;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  transition: background 0.2s ease;
+  outline: none;
+}
+.message #ok:hover {
+  background: #8ecf68;
+}
+.message #ok:active {
+  background: #5a9f32;
+}
+
+.comein {
+  top: 150px;
+  opacity: 1;
+}
+/*END POPUP*/
+
+
+

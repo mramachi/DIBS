@@ -1,0 +1,26 @@
+<div class="Events-admin view">
+	<div class="container">
+		<div class="row">
+            <div class="span3">
+                Name:
+                <br />
+                <input data-ng-model="newEvent.name" type="text" placeholder="Name">
+            </div>
+            <div class="span3">
+                Date:
+                <br />
+                <input data-ng-model="newEvent.date" type="text" placeholder="Date">
+            </div>
+            <div class="span3">
+                Place:
+                <br />
+                <input data-ng-model="newEvent.place" type="text" placeholder="Place">
+            </div>
+            <div class="span6">
+                <button id="submitEvent" class="btn btn-primary" type="button" 
+                    data-ng-disabled="!newEvent.name || !newEvent.date || !newEvent.place" 
+                    data-ng-click="insertEvent()">Add Event</button>
+            </div>
+        </div>
+	</div>
+</div>

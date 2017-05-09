@@ -1,0 +1,8 @@
+#profilePhoto{
+	border-radius:50%;
+	position:absolute;
+	bottom:1vh;
+	right:10vw;
+	width:10vw;
+	height:10vw;
+}

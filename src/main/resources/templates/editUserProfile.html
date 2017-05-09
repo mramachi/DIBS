@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html data-ng-app="eventApp">
+<head>
+	<title>Dibs | Profile</title>
+	<meta charset="UTF-8"/>
+	<!--Default zoom for mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1" /> 
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="css/onepage-scroll.css"/>
+	<link rel="stylesheet" type="text/css" href="http://daneden.github.io/animate.css/animate.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles_mobiel.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles_event.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles_partners.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles_users.css"/>
+     <link rel="stylesheet" type="text/css" href="css/styles_users_mobiel.css"/>
+
+	<!-- FONTS -->
+	<link href='https://fonts.googleapis.com/css?family=Codystar' rel='stylesheet' type='text/css'/>
+	<link href='https://fonts.googleapis.com/css?family=Comfortaa:300' rel='stylesheet' type='text/css'/>
+	<link href='https://fonts.googleapis.com/css?family=Caveat' rel='stylesheet' type='text/css'/>
+	<link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'/>
+	<link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'/>
+
+
+	<!-- ICONS -->
+
+
+	<!-- SCRIPTS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+	<!--Bootstrap-->
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+	<!--Angular-->
+	<script type="text/javascript" src="js/angular.js"></script>
+	<script type="text/javascript" src="js/angular-route.js"></script>
+	  <!-- Angular Material requires Angular.js Libraries -->
+	  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+	  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+	  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+	  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+	
+	  <!-- Angular Material Library -->
+	  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+	<script src="http://ngmaterial.assets.s3.amazonaws.com/svg-assets-cache.js"></script>
+	
+	<!-- Moment -->
+	<script type="text/javascript" src="js/moment.min.js"></script>
+
+	<!--bootstrap ui -->
+	<script data-require="angular-ui-bootstrap@0.3.0" data-semver="0.3.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.3.0.min.js"></script>
+    
+	<!-- Facebook Login -->
+	<script data-semver="1.1.5" src="http://rawgithub.com/Ciul/angular-facebook/master/lib/angular-facebook.js"></script>
+	
+
+	<!--Events-->
+	<script type="text/javascript" src="js/eventApp.js"></script> 
+
+	<!--Navigation-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+       <script>
+        $(document).ready(function() {
+            $('#fullpage').fullpage({
+                anchors: ['Pag1', 'Pag2', 'Pag3','Pag4', 'Pag5', 'Pag6'],
+                fixedElements: '.NavBar',
+                animateAnchor:true,
+            });
+        });
+      </script>
+	      <!-- This following line is optional. Only necessary if you use the option css3:false and you want to use other easing effects rather than "linear", "swing" or "easeInOutCubic". -->
+		<script src="js/vendors/jquery.easings.min.js"></script>
+
+		<!-- This following line is only necessary in the case of using the plugin option `scrollOverflow:true` -->
+		<script type="text/javascript" src="js/vendors/jquery.slimscroll.min.js"></script>
+
+		<script type="text/javascript" src="js/jquery.fullPage.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+
+		<!--mobiele navbar-->
+		<script>
+		$(document).on('click', '#toggle', function() {
+    		$(this).toggleClass('active');
+			$('#overlay').toggleClass('open');
+		});
+		</script>
+	    <script>
+	    $(document).on('click', '#favourite_user', function() {
+			  $(this).toggleClass('favourited unfavourited');
+			});
+		</script>
+
+</head>
+<body>
+	<div class="NavBar">
+	<ul>
+		<li><a href="index.html">Home</a></li>
+		<li data-menuanchor="Pag1" ><a href="#Pag1">Profile</a></li>
+
+	</ul>
+					
+</div>
+
+<div class="mobile_NavBar">
+<div class="button_container" id="toggle">
+  <span class="top"></span>
+  <span class="middle"></span>
+  <span class="bottom"></span>
+</div>
+
+<div class="overlay" id="overlay">
+  <nav class="overlay-menu">
+    <ul>
+    	<li><a href="index.html">Home</a></li>
+      	<li data-menuanchor="Pag1" ><a href="#Pag1">Profile</a></li>
+
+    </ul>
+  </nav>
+</div></div>
+
+<div class="LoginBar" >
+	<div ng-controller="fbController">
+		<div ng-if="!logged">
+			<ul>
+				<li><a href="userOrAdmin?login=true">Login</a></li>
+				<p> | </p>
+				<li><a href="userOrAdmin?login=false">Register</a></li>
+			</ul>
+		</div>
+		<div ng-if="logged">
+			<ul>
+				<li><a data-ng-controller="fbController" ng-click="MyProfile()"><img id="fbPhoto" ng-src="{{user.userPhotoPath}}"/> Profile</a></li>
+				<p> | </p>
+				<li><a ng-click="logout()">Logout</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div id="fullpage" data-ng-controller="fbController">
+	<div class="section" id="ThisEvent" data-anchor="Pag1">
+	
+		<div id="OmslagImg">
+			
+			<div id="ArrowBack">
+				<a onclick="history.back(-1)"> Back </a>
+			</div>
+			<a href="index.html"><div id="DibsLogo"></div></a>
+			<div id="EventNameOmslag" data-ng-controller="fbController" >
+				<img id="profilePhoto" ng-src="{{user.userPhotoPath}}"/>
+				<h2>{{user.userFirstName}} {{user.userLastName}}</h2>
+			</div>
+		</div>
+		<div id="LikeShareDibsEvent">
+				<span style="line-height:2.5; font-size:3vh;"><a data-ng-controller="fbController" ng-click="logout()">Log out</a></span>
+
+		</div>
+
+		<div id="PartnerContent">
+			<!-- edit form column -->
+      <div class="col-md-9 personal-info" >
+ 
+        <h3>Personal info    </h3>  <br/>
+        <a ng-click= "UserProfile()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Done</a>
+      
+        <form class="form-horizontal" role="form"  >
+          <div class="form-group">
+            <label class="col-lg-3 control-label">First name:</label>
+            <div class="col-lg-8">
+             <input class="form-control" value="{{user.userFirstName}}" ng-model="user.userFirstName" type="text" name="firstName"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Last name:</label>
+            <div class="col-lg-8">
+             <input class="form-control" value="{{user.userLastName}}" ng-model="user.userLastName" type="text" name="lastName"/>
+             </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Email:</label>
+            <div class="col-lg-8">
+               <input class="form-control" value="{{user.userEmail}}" ng-model="user.userEmail" type="email" name="email"/>
+             </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label">Phone:</label>
+            <div class="col-md-8">
+               <input class="form-control" value="{{user.userPhone}}" ng-model="user.userPhone" type="text" name="phone"/>
+             </div>
+          </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label"></label>
+            <div class="col-md-8">
+              <input class="btn btn-primary"  id="clickme" value="Save Changes" type="button" ng-click="postUser()"/>
+              <span></span>
+              <input class="btn btn-default" value="Cancel" type="reset"/><br/>
+
+            </div>
+           
+          </div>
+        </form>
+           
+      </div>
+      <form class="col-md-3 row" method="post" enctype="multipart/form-data" th:action="@{/user/uploadPhoto}">
+			<table data-ng-controller="fbController">
+				<tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
+				<tr><td>Name:</td><td><input type="text" name="name" /></td></tr>
+				<tr style="display:none;"><td></td><td><input type="text" name="id" ng-value="user.userID"/></td></tr>
+				<tr ><td></td><td><input type="submit" value="Upload" /></td></tr>
+			</table>
+		</form>
+	</div>
+		</div></div>
+	
+
+</body>
+</html>

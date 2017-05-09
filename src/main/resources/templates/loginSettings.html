@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html data-ng-app="loginsettingsApp">
+<head>
+	<title>Dibs | LoginSettings</title>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="css/onepage-scroll.css"/>
+	<link rel="stylesheet" type="text/css" href="http://daneden.github.io/animate.css/animate.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles_mobiel.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles_event.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles_login.css"/>
+
+	<!-- FONTS -->
+	<link href='https://fonts.googleapis.com/css?family=Codystar' rel='stylesheet' type='text/css'/>
+	<link href='https://fonts.googleapis.com/css?family=Comfortaa:300' rel='stylesheet' type='text/css'/>
+	<link href='https://fonts.googleapis.com/css?family=Caveat' rel='stylesheet' type='text/css'/>
+	<link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'/>
+	<link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'/>
+
+	<!-- SCRIPTS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+	<!--Bootstrap-->
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+	<!--Angular-->
+	<script type="text/javascript" src="js/angular.js"></script>
+	<script type="text/javascript" src="js/angular-route.js"></script>
+	
+	<!-- Facebook -->
+	<!-- script src="http://connect.facebook.net/en_US/sdk.js"></script> -->
+	<meta property="og:url"           content="http://dibs.intec.ugent.be:8080/login.html" />
+	<meta property="og:type"          content="website" />
+	<meta property="og:title"         content="Dibs" />
+	<meta property="og:description"   content="Low Budget Events in your Neighbourhood" />
+	<meta property="og:image"         content="http://dibs.intec.ugent.be:8080/img/LoginTypeWriter.jpg" />
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="lib/angular-facebook.js"></script>
+	
+	<!-- Google -->
+	<script src="https://apis.google.com/js/platform.js"></script>
+	<meta name="google-signin-client_id" content="482253377689-dl957oppu49o587vq6sb14d6f5vfklus.apps.googleusercontent.com"></meta>
+    
+    <!-- LOGINSETTINGS JAVASCRIPT ANGULAR -->
+    <script type="text/javascript" src="js/loginSettingsApp.js"></script>
+</head>
+
+<body>
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+
+<div class="section" id="Log" data-anchor="Login">
+	<div id="Omslag">
+		<div id="EventNameOmslag">
+			<h2>Check your settings</h2>
+		</div>
+	</div>
+
+	<div class="box">
+		<div class="middlePage" ng-controller="loginsettingsCtrl">
+			<form class="form-horizontal" role="form">
+				<div ng-init="getMyFirstName()"> First name: "{{user.first_name}}"</div><br/>
+				<div ng-init="getMyLastName()"> Last name: "{{user.last_name}}"</div><br/>
+				<div ng-init="getMyEmail()"> Email: "{{user.email}}" </div><br/>
+				
+				<input type="email" class="form-control input-md" placeholder="New Email" ng-init="user.email"/>
+				<button ng-click="change()">Change</button>
+				<button ng-click="submit()">Done!</button>
+			</form>  
+		</div>
+	</div>
+</div>
+
+</body>
+<footer>
+</footer></html>

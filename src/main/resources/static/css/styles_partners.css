@@ -1,0 +1,137 @@
+#PartnerContent{
+	background-color: rgba(255,255,255,0.7);
+	width:90%;
+	height:57vh;
+	margin:auto;
+	overflow:hidden;
+}
+
+#LikeShareDibsEvent{
+	background-color:rgba(102, 153, 255,0.8);
+}
+
+#LikeShareDibsEvent a{
+	color:white;
+}
+
+.EventsTable{
+	width:90%;
+	height:100%;
+	margin:auto;
+	margin-top:0;
+}
+
+#PartnerContent .EventsContainer{
+	width:30%;
+	height:35%;
+}
+
+#LikeShareDibsEvent h4{
+	margin:0;
+	font-size:5vh;
+	text-align:center;
+	padding:2vh;
+	color:white;
+	text-shadow: 1px 1px 2px black;
+	letter-spacing: 2px;
+}
+
+#PartnerContent .arr-right {
+	transform:rotate(-45deg);
+	margin-top:20vh;
+	margin-right:4vh;
+}
+#PartnerContent.arr-left  {
+	transform:rotate(135deg);
+	margin-top:20vh;
+	margin-left:4vh;
+}
+
+#PartnerPictures{
+	width:100%;
+	height:100vh;
+	background-image:url('../Img/stars.jpg');
+	margin:0;
+	display:inline-block;
+	overflow:hidden;
+}
+
+#PartnerPictures .EventsContainer{
+	background-image: url('../Img/previewPartnerPictures.jpg');
+	background-size:cover;
+}
+
+#PastEvents{
+	width:100%;
+	height:100vh;
+	background-image:url('../Img/stars.jpg');
+	margin:0;
+	display:inline-block;
+}
+
+#PastEventContent{
+	background-color: rgba(255,255,255,0.7);
+	width:90%;
+	height:75vh;
+	margin:auto;
+	overflow:hidden;
+}
+
+#PastEventContent .EventsContainer{
+	height:28%;
+}
+
+
+#PastEventContent .arr-right {
+	transform:rotate(-45deg);
+	margin-top:35vh;
+	margin-right:4vh;
+}
+#PastEventContent .arr-left  {
+	transform:rotate(135deg);
+	margin-top:35vh;
+	margin-left:4vh;
+}
+
+#eventscontainer{
+	width:100%;
+	height:100%;
+	overflow:hidden;
+	margin:auto;
+	
+}
+
+#listPartner ul{
+	width:80%;
+	margin:auto;
+	margin-top:20px;
+}
+
+#pagPartner{
+
+	position:absolute;
+	right:45%;
+	bottom:5%;
+}
+
+#fb{
+	display:block;
+	position:absolute; 
+	bottom:18% ;
+	right:10%;
+	 z-index:500;
+}
+
+#fb_mob{
+	display:none;
+	position:absolute; 
+	top:5vh ;
+	right:0%; 
+	z-index:500;
+}
+
+body{
+	min-height:100vh;
+}
+
+

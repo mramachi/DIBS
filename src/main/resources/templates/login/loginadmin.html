@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html data-ng-app="loginApp">
+
+  <head>
+  	<title>Dibs | Login User</title>
+  	
+  	<!-- Meta -->
+  	<meta charset="UTF-8"></meta>
+	<!--Default zoom for mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1" /> 
+	<meta name="author" content="Mousti, Laura, Simon en Stephanie"/>
+	<meta http-equiv="pragma" content="no-cache"/>
+  	
+  	<!-- Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'></link>
+	
+    <!-- CSS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/styles_login2.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/styles_login_mobile.css"/>
+   
+    <!--Bootstrap-->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    
+    <!-- Angular + facebook -->
+    <script data-require="angular.js@1.1.5" data-semver="1.1.5" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.js"></script>
+    <script src="js/angular-facebook.js"></script>
+    <script src="js/loginStephanie.js"></script>
+    
+    <!-- Glyphicon -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css"/>
+    
+    <!-- Mobiele Navbar -->
+	<script>
+		$(document).on('click', '#toggle', function() {
+    		$(this).toggleClass('active');
+			$('#overlay').toggleClass('open');
+		});
+	</script>
+
+  </head>
+
+  <body data-ng-controller="MainController">  
+  <div class="mobile_NavBar">
+	<div class="button_container" id="toggle">
+	  <span class="top"></span>
+	  <span class="middle"></span>
+	  <span class="bottom"></span>
+	</div>
+	
+	<div class="overlay" id="overlay">
+	  <nav class="overlay-menu">
+	    <ul data-ng-controller="MainController">
+	    	<li><a href="index.html">Home</a></li>
+	      	<li data-menuanchor="Pag2" ng-if="!logged"><a href="userOrAdmin?login=true">Login</a></li>
+			<li data-menuanchor="Pag3" ng-if="!logged"><a href="userOrAdmin?login=false">Register</a></li>
+			<li data-menuanchor="Pag4" ng-if="logged"><a data-ng-controller="MainController" ng-click="MyProfile()"><img id="fbPhoto" ng-src="{{user.userPhotoPath}}"/> Profile</a></li>
+			<li data-menuanchor="Pag5" ng-if="logged"><a ng-click="logout()">Logout</a></li>
+	    </ul>
+	  </nav>
+	</div>
+</div>
+        <div class="header-container" >
+        	<a class="navbar-brand" id="DibsLogo" href="index">
+		     </a>
+        </div>
+          
+
+	
+          <div style="margin:5vh;margin-left:10em; margin-bottom:0;" class="alert alert-info" data-ng-show="logged" data-ng-disabled="!facebookReady" role="alert">
+			  <span class="glyphicon glyphicon-exclamation-sign"  aria-hidden="true"></span>
+			  <span class="sr-only">Error:</span>
+			You are logged in!
+		</div>
+          <form id="login-form" role="form" th:action="@{/loginadmin}" method="post">
+          
+		<div class="heading">Login to Dibs!</div>
+			  
+			  <div class="content" style="height:40%;padding:2em;">
+
+            <div class="form-group">
+                <label for="username">User Name :</label>
+                <input type="text" class="form-control" id="email" placeholder="Enter username" name="username"/>
+            </div>
+            <div class="form-group">
+                <label for="pwd">Password :</label>
+                <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password"/>
+            </div>
+            <div style="text-align: right">
+                <button type="submit" class="btn btn-default" >Sign In</button>
+            </div>
+       </div>
+       </form>
+          
+     
+    <script>
+  		
+    </script>
+  </body>
+  
+
+</html>
+

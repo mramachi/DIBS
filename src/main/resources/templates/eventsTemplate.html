@@ -1,0 +1,154 @@
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+ 
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" data-ng-controller="EventResultController">
+    <div class="item active">
+		<div class="EventsTable" data-ng-controller="EventController">
+	<div class="EventsContainer" data-ng-repeat="ev in allEvents | orderBy: date | limitTo:9">
+		  <div class="EventImage">
+		  	<img ng-src="{{ev.img}}" alt="Try again later"/>
+		  </div>
+		  <div class="EventRight">
+		  	<h2>{{ev.eventName}}</h2>
+		  	<ul>
+		  		<li style="text-align:left;padding-right:0; ">{{ev.eventTimeStart}}</li>
+		  		<li style="text-align:right;padding-left:0;">{{ev.location}}</li>
+		  	</ul>	
+		  	<div class="EventLikes">
+		  	<br/>
+			  	<ul>
+			  		<li>{{ev.likes}} likes</li>
+			  		<li>{{ev.shares}} shares</li>
+			  		<li><button ng-click="resultEvent(ev.eventID)">More</button></li>
+			  	</ul>
+		  	</div>
+		  </div>
+	</div>
+	
+	
+	<div class="EventsContainer_mobile" data-ng-repeat="ev in events | orderBy: date | limitTo:3">
+		  <div class="EventImage">
+		  	<img ng-src="{{ev.img}}" alt="Try again later"/>
+		  </div>
+		  <div class="EventRight_mobile">
+		  <h2>{{ev.name}}</h2>
+		  <ul>
+		  		<li>{{ev.date}}</li>
+		  		<li>{{ev.place}}</li>
+		  	</ul>	</div>
+		  <div class="EventLikes_mobile">
+		  	<ul>
+			  		<li>{{ev.likes}} likes</li>
+			  		<li>{{ev.shares}} shares</li>
+			  		<li><button>More</button></li>
+			  	</ul>
+		  </div>
+	</div>
+</div>
+
+
+    </div>
+    <div class="item">
+    	<div class="EventsTable" data-ng-controller="EventController">
+	<div class="EventsContainer" data-ng-repeat="ev in allEvents | orderBy: date | limitTo:9">
+		  <div class="EventImage">
+		  	<img ng-src="{{ev.img}}" alt="Try again later"/>
+		  </div>
+		  <div class="EventRight">
+		  	<h2>{{ev.eventName}}</h2>
+		  	<ul>
+		  		<li style="text-align:left;padding-right:0; ">{{ev.eventTimeStart}}</li>
+		  		<li style="text-align:right;padding-left:0;">{{ev.location}}</li>
+		  	</ul>	
+		  	<div class="EventLikes">
+		  	<br/>
+			  	<ul>
+			  		<li>{{ev.likes}} likes</li>
+			  		<li>{{ev.shares}} shares</li>
+			  		<li><button ng-click="resultEvent(ev.eventID)">More</button></li>
+			  	</ul>
+		  	</div>
+		  </div>
+	</div>
+	
+	
+	<div class="EventsContainer_mobile" data-ng-repeat="ev in events | orderBy: date | limitTo:3">
+		  <div class="EventImage">
+		  	<img ng-src="{{ev.img}}" alt="Try again later"/>
+		  </div>
+		  <div class="EventRight_mobile">
+		  <h2>{{ev.name}}</h2>
+		  <ul>
+		  		<li>{{ev.date}}</li>
+		  		<li>{{ev.place}}</li>
+		  	</ul>	</div>
+		  <div class="EventLikes_mobile">
+		  	<ul>
+			  		<li>{{ev.likes}} likes</li>
+			  		<li>{{ev.shares}} shares</li>
+			  		<li><button>More</button></li>
+			  	</ul>
+		  </div>
+	</div>
+</div>
+    </div>
+	<div class="item">
+	<div class="EventsTable" data-ng-controller="EventController">
+	<div class="EventsContainer" data-ng-repeat="ev in allEvents | orderBy: date | limitTo:9">
+		  <div class="EventImage">
+		  	<img ng-src="{{ev.img}}" alt="Try again later"/>
+		  </div>
+		  <div class="EventRight">
+		  	<h2>{{ev.eventName}}</h2>
+		  	<ul>
+		  		<li style="text-align:left;padding-right:0; ">{{ev.eventTimeStart}}</li>
+		  		<li style="text-align:right;padding-left:0;">{{ev.location}}</li>
+		  	</ul>	
+		  	<div class="EventLikes">
+		  	<br/>
+			  	<ul>
+			  		<li>{{ev.likes}} likes</li>
+			  		<li>{{ev.shares}} shares</li>
+			  		<li><button ng-click="resultEvent(ev.eventID)">More</button></li>
+			  	</ul>
+		  	</div>
+		  </div>
+	</div>
+	
+	
+	<div class="EventsContainer_mobile" data-ng-repeat="ev in events | orderBy: date | limitTo:3">
+		  <div class="EventImage">
+		  	<img ng-src="{{ev.img}}" alt="Try again later"/>
+		  </div>
+		  <div class="EventRight_mobile">
+		  <h2>{{ev.name}}</h2>
+		  <ul>
+		  		<li>{{ev.date}}</li>
+		  		<li>{{ev.place}}</li>
+		  	</ul>	</div>
+		  <div class="EventLikes_mobile">
+		  	<ul>
+			  		<li>{{ev.likes}} likes</li>
+			  		<li>{{ev.shares}} shares</li>
+			  		<li><button>More</button></li>
+			  	</ul>
+		  </div>
+	</div>
+</div>
+	</div>
+  </div>
+ 
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div> <!-- Carousel -->

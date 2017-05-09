@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html data-ng-app="eventApp">
+<head>
+	<title>Dibs | Low budget events</title>
+	<meta charset="UTF-8"/>
+	<!--Default zoom for mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1" /> 
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="css/onepage-scroll.css"/>
+	<link rel="stylesheet" type="text/css" href="http://daneden.github.io/animate.css/animate.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles_event.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles_partners.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles_mobiel.css"/>
+
+	<!-- FONTS -->
+	<link href='https://fonts.googleapis.com/css?family=Codystar' rel='stylesheet' type='text/css'/>
+	<link href='https://fonts.googleapis.com/css?family=Comfortaa:300' rel='stylesheet' type='text/css'/>
+	<link href='https://fonts.googleapis.com/css?family=Caveat' rel='stylesheet' type='text/css'/>
+	<link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'/>
+	<link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'/>
+
+
+	<!-- ICONS -->
+
+
+	<!-- SCRIPTS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+	<!--Bootstrap-->
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+	<!--Angular-->
+	<script type="text/javascript" src="js/angular.js"></script>
+	<script type="text/javascript" src="js/angular-route.js"></script>
+	 <!-- Angular Material requires Angular.js Libraries -->
+	  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+	  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+	  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+	  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+	
+	  <!-- Angular Material Library -->
+	  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+	<script src="http://ngmaterial.assets.s3.amazonaws.com/svg-assets-cache.js"></script>
+	
+	<!-- Moment -->
+	<script type="text/javascript" src="js/moment.min.js"></script>
+
+	<!--bootstrap ui -->
+	<script data-require="angular-ui-bootstrap@0.3.0" data-semver="0.3.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.3.0.min.js"></script>
+
+	<!--Events-->
+	<script type="text/javascript" src="js/eventApp.js"></script> 
+	<script type="text/javascript" src="js/eventPage.js"></script>
+
+	<!--Navigation-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+       <script>
+        $(document).ready(function() {
+            $('#fullpage').fullpage({
+                anchors: ['Partner', 'Pictures', 'Pag3', 'Pag4', 'Pag5', 'Pag6'],
+                fixedElements: '.NavBar',
+                animateAnchor:true,
+                recordHistory:false,
+                menu:true,
+              	slidesNavigation:true,
+            });
+        });
+      </script>
+	      <!-- This following line is optional. Only necessary if you use the option css3:false and you want to use other easing effects rather than "linear", "swing" or "easeInOutCubic". -->
+		<script src="js/vendors/jquery.easings.min.js"></script>
+
+		<!-- This following line is only necessary in the case of using the plugin option `scrollOverflow:true` -->
+		<script type="text/javascript" src="js/vendors/jquery.slimscroll.min.js"></script>
+
+		<script type="text/javascript" src="js/jquery.fullPage.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+
+		<!--mobiele navbar-->
+		<script>
+		$(document).on('click', '#toggle', function() {
+    		$(this).toggleClass('active');
+			$('#overlay').toggleClass('open');
+		});
+		</script>
+	    <script>
+	    $(document).on('click', '#favourite_user', function() {
+			  $(this).toggleClass('favourited unfavourited');
+			});
+		</script>
+
+
+
+	
+</head>
+<body>
+	<div class="NavBar">
+	<ul>
+		<li><a href="index.html">Home</a></li>
+      	<li data-menuanchor="Pag1" ><a href="#Partner" >Partner</a></li>
+		<li data-menuanchor="Pag4"><a href="#Pictures">Pictures</a></li>
+	</ul>
+					
+</div>
+
+<div class="mobile_NavBar">
+<div class="button_container" id="toggle">
+  <span class="top"></span>
+  <span class="middle"></span>
+  <span class="bottom"></span>
+</div>
+
+<div class="overlay" id="overlay">
+  <nav class="overlay-menu">
+    <ul data-ng-controller="fbController">
+    	<li><a href="index.html">Home</a></li>
+      	<li data-menuanchor="Pag1" ><a href="#Partner" >Partner</a></li>
+		<li data-menuanchor="Pictures"><a href="#Pictures">Pictures</a></li>
+		<li data-menuanchor="Pag3" ng-if="!logged"><a href="userOrAdmin?login=true">Login</a></li>
+		<li data-menuanchor="Pag4" ng-if="!logged"><a href="userOrAdmin?login=false">Register</a></li>
+		<li data-menuanchor="Pag5" ng-if="logged"><a data-ng-controller="fbController" ng-click="MyProfile()"><img id="fbPhoto" ng-src="{{user.userPhotoPath}}"/> Profile</a></li>
+		<li data-menuanchor="Pag6" ng-if="logged"><a ng-click="logout()">Logout</a></li>
+    </ul>
+  </nav>
+</div></div>
+
+<!-- Facebook Login -->
+<script data-semver="1.1.5" src="http://rawgithub.com/Ciul/angular-facebook/master/lib/angular-facebook.js"></script>
+
+
+<div class="LoginBar" >
+	<div ng-controller="fbController">
+		<div ng-if="!logged">
+			<ul>
+				<li><a href="userOrAdmin?login=true">Login</a></li>
+				<p> | </p>
+				<li><a href="userOrAdmin?login=false">Register</a></li>
+			</ul>
+		</div>
+		<div ng-if="logged">
+			<ul>
+				<li><a data-ng-controller="fbController" ng-click="MyProfile()"><img id="fbPhoto" ng-src="{{user.userPhotoPath}}"/> Profile</a></li>
+				<p> | </p>
+				<li><a ng-click="logout()">Logout</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div id="fullpage" data-ng-controller="PartnerController" class="partnerCSS">
+	<div class="section" id="ThisEvent" data-anchor="Partner">
+	
+		<div id="OmslagImg">
+			
+			<div id="ArrowBack">
+			<a onclick="history.back(-1)"> Back </a>
+			</div>
+			<a href="index.html"><div id="DibsLogo"></div></a>
+			<div id="EventNameOmslag">
+			<h2>{{partner.partnerName}}</h2>
+			<div id="fb">
+				<div class="fb-like" 
+					data-href="{{href}}"
+					data-layout="box_count" 
+					data-action="like" 
+					data-show-faces="false"
+					data-colorscheme="dark">
+				</div>
+				<div class="fb-share-button" 
+					data-href="http://dibs.intec.ugent.be:8080/partnerpage?id=3"
+					data-layout="box_count" 
+					data-action="share" 
+					data-show-faces="false"
+					data-colorscheme="dark">
+				</div>
+			</div>
+			<div id="fb_mob" >
+				<div class="fb-like" 
+					data-href="{{href}}"
+					data-layout="button" 
+					data-action="like" 
+					data-show-faces="false"
+					data-colorscheme="dark">
+				</div>
+				<div class="fb-share-button" 
+					data-href="http://dibs.intec.ugent.be:8080/partnerpage?id=3"
+					data-layout="button" 
+					data-action="share" 
+					data-show-faces="false"
+					data-colorscheme="dark">
+				</div>
+			</div>
+			</div>
+		</div>
+		<div id="LikeShareDibsEvent">
+		
+			<h4>Events</h4>
+		</div>
+		<div id="PartnerContent" data-ng-init="getPartnerEvents(0,numberOfEvents)">
+			<div id="listPartner">
+				<ul class="list-group">
+				  <li data-ng-repeat="ev in events" class="list-group-item">
+				  <a ng-click="resultEvent(ev.eventID)" style="color:black;cursor:pointer;">{{ev.eventName}}</a></li>
+				</ul>
+			</div>
+			<div id="pagPartner">
+				<ul class="pagination">
+				  <li data-ng-repeat="p in range(StartPage,totalPages-1) |limitTo:5"><a ng-click="getPartnerEvents(p,numberOfEvents)">{{p+1}}</a></li>
+				</ul>
+			</div>
+		</div>
+		
+	</div>
+
+	
+	<div class="section" id="PartnerPictures" data-anchor="Pictures">
+		<div id="EventHeader">
+			<h3>Pictures</h3>
+			
+		</div>
+		<div id="PastEventContent">
+			
+		</div>
+	
+
+	</div>
+</div>
+
+</body>
+</html>

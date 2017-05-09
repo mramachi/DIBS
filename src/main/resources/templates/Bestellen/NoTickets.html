@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html ng-app="bestelApp">
+<head>
+	<title>Dibs | Bestel</title>
+
+	<!-- Meta -->
+  	<meta charset="UTF-8"></meta>
+	<!--Default zoom for mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1" /> 
+	<meta name="author" content="Mousti, Laura, Simon en Stephanie"/>
+	<meta http-equiv="pragma" content="no-cache"/>
+	
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="css/onepage-scroll.css"/>
+	<link rel="stylesheet" type="text/css" href="http://daneden.github.io/animate.css/animate.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+	<link rel="stylesheet" type="text/css" href="css/styles_event.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles_bestellen.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles_mobiel.css"/>
+
+	<!-- FONTS -->
+	<link href='https://fonts.googleapis.com/css?family=Codystar' rel='stylesheet' type='text/css'/>
+	<link href='https://fonts.googleapis.com/css?family=Comfortaa:300' rel='stylesheet' type='text/css'/>
+	<link href='https://fonts.googleapis.com/css?family=Caveat' rel='stylesheet' type='text/css'/>
+	<link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'/>
+	<link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'/>
+
+	<!-- SCRIPTS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+	<!--Bootstrap-->
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+	<!--Angular-->
+	<script type="text/javascript" src="js/angular.js"></script>
+	<script type="text/javascript" src="js/angular-route.js"></script>
+	
+	<!-- BestelApp -->
+	<script type="text/javascript" src="js/bestelApp.js"></script>
+	
+	<!-- Mobiele Navbar -->
+	<script>
+		$(document).on('click', '#toggle', function() {
+    		$(this).toggleClass('active');
+			$('#overlay').toggleClass('open');
+		});
+	</script>
+	
+	<!-- Timer -->
+	<script type="text/javascript" src="js/moment.min.js"></script>
+	<script type="text/javascript" src="js/angular-timer-all.min.js"></script>
+	<script type="text/javascript" src="js/angular-timer-bower.js"></script>
+	
+</head>
+
+
+<body>
+
+<div class="mobile_NavBar">
+	<div class="button_container" id="toggle">
+	  <span class="top"></span>
+	  <span class="middle"></span>
+	  <span class="bottom"></span>
+	</div>
+	
+	<div class="overlay" id="overlay">
+	  <nav class="overlay-menu">
+	    <ul data-ng-controller="fbController">
+	    	<li><a href="index.html">Home</a></li>
+	      	<li data-menuanchor="Pag2" ng-if="!logged"><a href="userOrAdmin?login=true">Login</a></li>
+			<li data-menuanchor="Pag3" ng-if="!logged"><a href="userOrAdmin?login=false">Register</a></li>
+			<li data-menuanchor="Pag4" ng-if="logged"><a data-ng-controller="fbController" ng-click="MyProfile()"><img id="fbPhoto" ng-src="{{user.userPhotoPath}}"/> Profile</a></li>
+			<li data-menuanchor="Pag5" ng-if="logged"><a ng-click="logout()">Logout</a></li>
+	    </ul>
+	  </nav>
+	</div>
+</div>
+
+<!-- Facebook Login -->
+<script data-semver="1.1.5" src="http://rawgithub.com/Ciul/angular-facebook/master/lib/angular-facebook.js"></script>
+
+<div style="left:3%;top:10%;" id="ArrowBack">
+	<a onclick="history.back(-1)"> Back </a>
+</div>
+
+<div class="LoginBar" >
+	<div ng-controller="fbController">
+		<div ng-if="!logged">
+			<ul>
+				<li><a href="userOrAdmin?login=true">Login</a></li>
+				<p> | </p>
+				<li><a href="userOrAdmin?login=false">Register</a></li>
+			</ul>
+		</div>
+		<div ng-if="logged">
+			<ul>
+				<li><a data-ng-controller="fbController" ng-click="MyProfile()"><img id="fbPhoto" ng-src="{{user.userPhotoPath}}"/> Profile</a></li>
+				<p> | </p>
+				<li><a ng-click="logout()">Logout</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="pagina-bestellen">
+	<div class="box-container-bestellen">
+		<div class="box-bestellen">
+		
+		
+		<form id="form1" runat="server">
+		<h1>No Tickets Selected. Please try again.</h1>
+		
+		
+   
+    </form>
+    </div>
+	</div>
+	</div>
+
+</body>
+<footer>
+
+</footer>
+
+</html>

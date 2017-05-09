@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html data-ng-app="eventApp">
+<head>
+	<title>Dibs | Low budget events</title>
+	<meta charset="UTF-8"/>
+	<!--Default zoom for mobile devices-->
+	<meta name="viewport" content="width=device-width, initial-scale=1" /> 
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="css/onepage-scroll.css"/>
+	<link rel="stylesheet" type="text/css" href="http://daneden.github.io/animate.css/animate.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles_event.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles_mobiel.css"/>
+
+	<!-- FONTS -->
+	<link href='https://fonts.googleapis.com/css?family=Codystar' rel='stylesheet' type='text/css'/>
+	<link href='https://fonts.googleapis.com/css?family=Comfortaa:300' rel='stylesheet' type='text/css'/>
+	<link href='https://fonts.googleapis.com/css?family=Caveat' rel='stylesheet' type='text/css'/>
+	<link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'/>
+	<link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'/>
+
+
+	<!-- ICONS -->
+
+
+	<!-- SCRIPTS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+	<!--Bootstrap-->
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+	<!--Angular-->
+	<script type="text/javascript" src="js/angular.js"></script>
+	<script type="text/javascript" src="js/angular-route.js"></script>
+	  <!-- Angular Material requires Angular.js Libraries -->
+	  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+	  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+	  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+	  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+	
+	  <!-- Angular Material Library -->
+	  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+	<script src="http://ngmaterial.assets.s3.amazonaws.com/svg-assets-cache.js"></script>
+	
+	<!-- Moment -->
+	<script type="text/javascript" src="js/moment.min.js"></script>
+
+	<!--bootstrap ui -->
+	<script data-require="angular-ui-bootstrap@0.3.0" data-semver="0.3.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.3.0.min.js"></script>
+    
+    <!-- Facebook Login -->
+	<script src="js/angular-facebook.js"></script>
+	
+	<!--Events-->
+	<script type="text/javascript" src="js/eventApp.js"></script> 
+	<script type="text/javascript" src="js/eventPage.js"></script>
+
+	<!--Navigation-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+       <script>
+        $(document).ready(function() {
+            $('#fullpage').fullpage({
+                anchors: ['ThisEv', 'Pag2', 'Pag3', 'Pag4', 'Pag5'],
+                fixedElements: '.NavBar',
+                animateAnchor:true,
+                recordHistory:false,
+                menu:true,
+              	slidesNavigation:true,
+            });
+        });
+      </script>
+	      <!-- This following line is optional. Only necessary if you use the option css3:false and you want to use other easing effects rather than "linear", "swing" or "easeInOutCubic". -->
+		<script src="js/vendors/jquery.easings.min.js"></script>
+
+		<!-- This following line is only necessary in the case of using the plugin option `scrollOverflow:true` -->
+		<script type="text/javascript" src="js/vendors/jquery.slimscroll.min.js"></script>
+
+		<script type="text/javascript" src="js/jquery.fullPage.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+
+		<!--mobiele navbar-->
+		<script>
+		$(document).on('click', '#toggle', function() {
+    		$(this).toggleClass('active');
+			$('#overlay').toggleClass('open');
+		});
+		</script>
+		  <script>
+	    $(document).on('click', '#favourite_user', function() {
+			  $(this).toggleClass('favourited unfavourited');
+			});
+		</script>
+
+
+
+	
+</head>
+<body>
+	<div class="NavBar">
+	<ul>
+		<li><a href="index.html">Home</a></li>
+		<li data-menuanchor="ThisEv" ><a href="#ThisEv" >This Event</a></li>
+
+	</ul>
+					
+</div>
+
+<div class="mobile_NavBar">
+<div class="button_container" id="toggle">
+  <span class="top"></span>
+  <span class="middle"></span>
+  <span class="bottom"></span>
+</div>
+
+<div class="overlay" id="overlay">
+  <nav class="overlay-menu">
+    <ul data-ng-controller="fbController">
+    	<li><a href="index.html">Home</a></li>
+      	<li data-menuanchor="ThisEv" ><a href="#ThisEv" >This Event</a></li>
+      	<li data-menuanchor="Pag2" ng-if="!logged"><a href="userOrAdmin?login=true">Login</a></li>
+		<li data-menuanchor="Pag3" ng-if="!logged"><a href="userOrAdmin?login=false">Register</a></li>
+		<li data-menuanchor="Pag4" ng-if="logged"><a data-ng-controller="fbController" ng-click="MyProfile()"><img id="fbPhoto" ng-src="{{user.userPhotoPath}}"/> Profile</a></li>
+		<li data-menuanchor="Pag5" ng-if="logged"><a ng-click="logout()">Logout</a></li>
+    </ul>
+  </nav>
+</div></div>
+
+<!-- Facebook Login -->
+<script data-semver="1.1.5" src="http://rawgithub.com/Ciul/angular-facebook/master/lib/angular-facebook.js"></script>
+
+
+<div class="LoginBar" >
+	<div data-ng-controller="fbController">
+		<div ng-if="!logged">
+			<ul>
+				<li><a href="userOrAdmin?login=true">Login</a></li>
+				<p> | </p>
+				<li><a href="userOrAdmin?login=false">Register</a></li>
+			</ul>
+		</div>
+		<div ng-if="logged">
+			<ul>
+				<li><a data-ng-controller="fbController" ng-click="MyProfile()"><img id="fbPhoto" ng-src="{{user.userPhotoPath}}"/> Profile</a></li>
+				<p> | </p>
+				<li><a ng-click="logout()">Logout</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div id="fullpage" >
+	<div class="section" id="ThisEvent" data-anchor="ThisEv" data-ng-controller="eventPageCtrl">
+	
+		<div id="OmslagImg">
+			
+			<div id="ArrowBack">
+				<a onclick="history.back(-1)"> Back </a>
+			</div>
+			<a href="index.html"><div id="DibsLogo"></div></a>
+			<div id="EventNameOmslag">
+				<h2 ng-bind="event.eventName"></h2>
+				
+			</div>
+			
+			<a ng-click="DibsIt(eventid)" id="OrderButton">
+  				<span>Dibs It</span>
+			</a>
+			<span id="TicksAvl">Only {{ticksavl}} tickets Available!</span>
+		</div>
+		<div id="LikeShareDibsEvent">
+			<div id="fb">
+				<div style="margin-top:2vh;" class="fb-like" 
+					data-href="{{href}}"
+					data-layout="button_count" 
+					data-action="like" 
+					data-show-faces="false"
+					data-colorscheme="dark">
+				</div>
+				<div style="margin-top:2vh;" class="fb-share-button" 
+					data-href="http://dibs.intec.ugent.be:8080/partnerpage?id=3"
+					data-layout="button_count" 
+					data-action="share" 
+					data-show-faces="false"
+					data-colorscheme="dark">
+				</div>
+				
+				<div style="position:absolute; right:8vw; font-size:18px;">
+				    <a ng-click="resultPartner(event.partnerID)"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Partner Page</a>
+				</div>
+			</div>
+			<div id="fb_mob" style="float:left; margin-top:2vh; margin-left:2vw;" >
+				<div class="fb-like" 
+					data-href="{{href}}"
+					data-layout="button" 
+					data-action="like" 
+					data-show-faces="false"
+					data-colorscheme="dark">
+				</div>
+				<div class="fb-share-button" 
+					data-href="http://dibs.intec.ugent.be:8080/partnerpage?id=3"
+					data-layout="button" 
+					data-action="share" 
+					data-show-faces="false"
+					data-colorscheme="dark">
+				</div>
+			
+				<div style="position:absolute; right:8vw; font-size:12px;">
+				    <a ng-click="resultPartner(event.partnerID)"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Partner Page</a>
+				</div>
+			</div>
+			
+		</div>
+
+		<div id="ContentEvent">
+		
+			<div id="ContentEventHeader" class="eventpageLeft">
+				<ul id="LeftContentEventHeader">
+					<li>Date: {{event.eventDate}}</li>
+					<li>Place: {{event.location.locationCity}}</li>
+				</ul>
+				<ul id="RightContentEventHeader">
+					
+				</ul>
+			</div>
+			<div id="ContentEventDescription">
+				<div id="DescriptionText">
+					{{event.eventDescription}}
+				</div>
+				<div id="DescriptionImage">
+					<div id="backgroundDescriptionImage"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+</div>
+
+
+</body>
+</html>

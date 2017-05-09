@@ -1,0 +1,31 @@
+@media screen and (max-width: 800px){
+	#profilePhoto{
+		width:20vw;
+		height:auto;
+		top:1vh;
+		right:1vh;
+	}
+	
+	#EventNameOmslag h2{
+		font-size:5vh;
+	}
+	
+	#PartnerContent{
+	height:auto;
+	min-height:80vh;
+	font-size:2vh;
+	}
+	.form-control{
+	height:4vh;
+	font-size:2vh;
+	margin:0;
+	}
+	.form-group{
+		margin-bottom:1vh;
+	}
+	
+	.btn{
+		font-size:2vh;
+	}
+
+	}

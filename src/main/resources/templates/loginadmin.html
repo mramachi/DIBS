@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Spring Security Example </title>
+   
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+   
+    <!--Bootstrap-->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+ 
+    <style>
+    .formulier{
+        background-color: #CED8F6;
+        padding: 3%;
+    }
+    .container{
+        padding: 2%;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div th:if="${param.error}" class="alert alert-danger">
+            Invalid username and password.
+        </div>
+        <div th:if="${param.logout}" class="alert alert-success">
+            You have been logged out.
+        </div>
+    </div>
+ 
+    <!-- div class="container">
+        <form role="form" th:action="@{/loginadmin}" method="post">
+            <div class="form-group">
+                <label> User Name : </label>
+                <input type="text" name="username"/>
+            </div>
+            <div class="form-group">
+                <label> Password: </label>
+                <input type="password" name="password"/>
+            </div>
+            <div>
+                <input type="submit" value="Sign In"/>
+            </div>
+        </form>
+    </div -->
+ 
+    <div class="container">
+    <div class="formulier">
+        <h2><center>Admin Login</center></h2>
+        <form role="form" th:action="@{/loginadmin}" method="post">
+            <div class="form-group">
+                <label for="email">User Name :</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter email" name="username"/>
+            </div>
+            <div class="form-group">
+                <label for="pwd">Password :</label>
+                <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password"/>
+            </div>
+            <div style="text-align: right">
+                <button type="submit" class="btn btn-default" >Sign In</button>
+            </div>
+        </form>
+    </div>
+    </div>
+ 
+</body>
+</html>
